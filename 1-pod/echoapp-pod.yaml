@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echoapp-pod
+  labels:
+    app: echoapp
+    process: echoapp-web
+spec:
+  containers:
+    - name: echoapp
+      image: kaduev13/echoapp:latest
+      ports:
+        - containerPort: 8000
