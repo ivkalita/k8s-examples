@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: echoapp-replicaset
+  labels:
+    app: echoapp
+    process: echoapp-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: echoapp
+      process: echoapp-web
+  template:
+    metadata:
+      name: echoapp-pod
+      labels:
+        app: echoapp
+        process: echoapp-web
+    spec:
+      containers:
+        - name: echoapp
+          image: kaduev13/echoapp:latest
+          ports:
+            - containerPort: 8000
