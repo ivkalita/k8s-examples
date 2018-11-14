@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: echoapp-ingress
+  labels:
+    app: echoapp
+    process: echoapp-web
+spec:
+  tls:
+    - hosts:
+      - echoapp.moberries.com
+  rules:
+    - host: echoapp.moberries.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: echoapp-service
+              servicePort: http
